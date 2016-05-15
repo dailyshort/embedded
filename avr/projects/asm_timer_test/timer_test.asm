@@ -3,7 +3,7 @@
 .org 0x0000
 	rjmp SETUP
 
-.org 0x0006 << 1;Timer 0 overflow vector
+.org 0x0006;Timer 0 overflow vector
 	push r16
 	push r17
 	in r16, PORTD
@@ -14,7 +14,7 @@
 	pop r16
 	reti
 
-.org 0x0015 << 1
+.org 0x0015
 SETUP:
 	ldi r16, 0x00;Init ports
 	out DDRB, r16
