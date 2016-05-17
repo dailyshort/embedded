@@ -1,11 +1,5 @@
-#ifndef MYLCD_H_
-#define MYLCD_H_
-
-#include <stdint.h>
-
-#ifndef F_CPU
-#define F_CPU 1000000UL
-#endif
+#ifndef HD44780U_H_
+#define HD44780U_H_
 
 //LCD I/O port&pin definitions
 #define LCD_DATADIR		DDRD
@@ -51,14 +45,63 @@
 #define ASCII_NUMBER_OFFSET 0x30
 #define ASCII_LETTER_OFFSET 0x37
 
-//function prototypes
+
+/*
+* Function: LCD_init
+* ----------------------------
+* Set up avr io initalization.
+* As well function implement startup command sequence to an lcd module.
+* this function must be called in main program before any other function in this file
+* can be executed.
+*/
 void LCD_init(void);
+
+/*
+* Function: LCD_write
+* ----------------------------
+* Writes a single raw data byte to lcd module.
+* data: a raw data byte that content us printed to LCD. See HD4470 datasheet for character lookup table.
+*/
 void LCD_write(uint8_t data);
+
+/*
+* Function: LCD_putString
+* ----------------------------
+* Writes constant string character data to LCD from progmem.
+* strPtr: a null terminated string that MUST be pointing to program memory region.
+*/
 void LCD_putString(const char *strPtr);
-void LCD_Clear(void);
+
+/*
+* Function: LCD_clear
+* ----------------------------
+* Clears LCD screen and return cursor to home location.
+*/
+void LCD_clear(void);
+
+/*
+* Function: LCD_gotoXY
+* ----------------------------
+* Moves LCD cursor to given location.
+* x: horizontal
+* y: vertical
+*/
 void LCD_gotoXY(uint8_t x, uint8_t y);
+
+/*
+* Function: LCD_putHexByte
+* ----------------------------
+* Writes given byte to lcd as hex with format of 0xdd.
+* hexByte:
+*/
 void LCD_putHexByte(uint8_t hexByte);
+
+/*
+* Function: LCD_command
+* ----------------------------
+* Writes command to module command register
+* command: a valid command(see HD4470 datasheet for available commands).
+*/
 void LCD_command(uint8_t command);
-//end of function prototypes
 
 #endif /* MYLCD_H_ */
