@@ -206,6 +206,7 @@ static uint8_t LCD_isBusy(void)
 * ----------------------------
 * LCD_setPortData used to set data line nibble to match actual i/o port pins.
 * nibble: nibble parameter must be sent upper 4 bits as 0 and lower 4 bits as line data.
+* returns: a nibble repositioned according to lcd module data line pins.
 */
 static uint8_t LCD_setPortData(uint8_t nibble)
 {
