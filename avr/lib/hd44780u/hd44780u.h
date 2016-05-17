@@ -83,8 +83,8 @@ void LCD_clear(void);
 * Function: LCD_gotoXY
 * ----------------------------
 * Moves LCD cursor to given location.
-* x: horizontal
-* y: vertical
+* x: horizontal cursor pos
+* y: vertical cursor pos
 */
 void LCD_gotoXY(uint8_t x, uint8_t y);
 
@@ -104,4 +104,4 @@ void LCD_putHexByte(uint8_t hexByte);
 */
 void LCD_command(uint8_t command);
 
-#endif /* MYLCD_H_ */
+#endif
